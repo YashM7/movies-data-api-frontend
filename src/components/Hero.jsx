@@ -59,6 +59,9 @@ function Hero() {
         return (
             <div className="lightbox-overlay" onClick={closeLightbox}>
                 <div className="lightbox hideScrollBar" onClick={stopPropagation}>
+                <span className="close-btn" onClick={closeLightbox}>
+                    &times;
+                </span>
                     <div>
                         <div className='player-wrapper'>
                             <ReactPlayer
@@ -67,6 +70,7 @@ function Hero() {
                                 playing={true}
                                 muted={true}
                                 url={movie.Trailer}
+                                width='100%'
                             />
                         </div>
                         <h2>{movie.Title}</h2>
