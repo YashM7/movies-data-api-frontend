@@ -3,11 +3,20 @@ import axios from "axios";
 import ReactPlayer from "react-player";
 import Navbar from "./Navbar";
 
+function Loader() {
+    return (
+      <div className="loader-container">
+        <div className="loader"></div>
+      </div>
+    );
+}
+
 function WatchList(){
 
     const [id, setId] = useState("");
     const [buttonText, setButtonText] = useState("");
     const [buttonClass, setButtonClass] = useState("");
+    var count = 0;
 
 
     // Function to get data for all movies
@@ -47,6 +56,8 @@ function WatchList(){
         return data.map((movie, index) => {
             const { _id, Poster, Title, Genre, Trailer} = movie; //destructuring
             if(movie.WatchList === "true"){
+                count++;
+                console.log(count);
             return (
                 <a onClick={openLightbox} key={index}>
                 <img src={Poster} alt={Title} id={_id} />
@@ -96,10 +107,16 @@ function handleClick() {
     if(buttonText === "Add to list"){
         setButtonText("Remove from list");
         setButtonClass("redbtn");
+        console.log("inside handle click ++");
+        count++;
+        console.log(count);
     }
     else{
         setButtonText("Add to list");
         setButtonClass("greenbtn");
+        console.log("inside handle click --");
+        count--;
+        console.log(count);
     }
     const data = {
         WatchList: buttonClass === "redbtn" ? "false" : "true"
@@ -138,7 +155,14 @@ const { movie } = fetchMovie(
             <h1>Watchlist</h1>
             <div className="box">
                 {
-                    !loading && (renderData(data))
+                    loading && Loader()
+                }
+                {
+                    !loading && (renderData(data)) 
+                    
+                }
+                {
+                    (!loading && count == 0) ? <p>Watchlist empty</p> : <></>
                 }
                 {
                     lightboxVisible && (renderMovie(movie))

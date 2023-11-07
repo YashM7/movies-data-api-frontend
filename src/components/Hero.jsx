@@ -2,6 +2,14 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import ReactPlayer from "react-player";
 
+function Loader() {
+    return (
+      <div className="loader-container">
+        <div className="loader"></div>
+      </div>
+    );
+}
+
 function Hero() {
 
     const [id, setId] = useState("");
@@ -44,7 +52,7 @@ function Hero() {
     // Function to render all movies as tiles on home page
     const renderData = (data, displayGenre) => {
         return data.map((movie, index) => {
-            const { _id, Poster, Title, Genre, Trailer} = movie; //destructuring
+            const { _id, Poster, Title, Genre} = movie; //destructuring
             if(Genre.includes(displayGenre)){
             return (
                 <a onClick={openLightbox} key={index}>
@@ -134,7 +142,7 @@ function Hero() {
             <h1 id="home">Trending Now</h1>
             <div className="box">
               {
-                loading && <p>Fetching data from database</p>
+                loading && Loader()
               }
               {
                 !loading && (renderData(data, "Trending"))
@@ -147,7 +155,7 @@ function Hero() {
           <h1 id="tvShows">TV Shows</h1>
           <div className="box">
             {
-                loading && <p>Fetching data from database</p>
+                loading && Loader()
             }
             {
                 !loading && (renderData(data, "TV"))
@@ -161,7 +169,7 @@ function Hero() {
           <h1 id="movies">Action & Adventure</h1>
           <div className="box">
             {
-                loading && <p>Fetching data from database</p>
+                loading && Loader()
             }
             {
                 !loading && (renderData(data, "Action"))
@@ -175,7 +183,7 @@ function Hero() {
           <h1 id="anime">Anime</h1>
           <div className="box">
             {
-                loading && <p>Fetching data from database</p>
+                loading && Loader()
             }
             {
                 !loading && (renderData(data, "Anime"))
@@ -189,7 +197,7 @@ function Hero() {
           <h1 id="originals">Netflix Originals</h1>
           <div className="box">
             {
-                loading && <p>Fetching data from database</p>
+                loading && Loader()
             }
             {
                 !loading && (renderData(data, "Original"))
