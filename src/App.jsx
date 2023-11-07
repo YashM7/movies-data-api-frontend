@@ -6,8 +6,9 @@ import WatchList from "./components/WatchList"
 function App() {
   return (
     <Routes>
-      <Route path="/" element={<Home />} />
-      <Route path="watchlist" element={<WatchList />} />
+      <Route path="/" element={<Home />}>
+        <Route path="watchlist" element={<WatchList />} />
+      </Route>
     </Routes>
   )
 }
