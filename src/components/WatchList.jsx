@@ -57,7 +57,6 @@ function WatchList(){
             const { _id, Poster, Title, Genre, Trailer} = movie; //destructuring
             if(movie.WatchList === "true"){
                 count++;
-                console.log(count);
             return (
                 <a onClick={openLightbox} key={index}>
                 <img src={Poster} alt={Title} id={_id} />
@@ -107,16 +106,10 @@ function handleClick() {
     if(buttonText === "Add to list"){
         setButtonText("Remove from list");
         setButtonClass("redbtn");
-        console.log("inside handle click ++");
-        count++;
-        console.log(count);
     }
     else{
         setButtonText("Add to list");
         setButtonClass("greenbtn");
-        console.log("inside handle click --");
-        count--;
-        console.log(count);
     }
     const data = {
         WatchList: buttonClass === "redbtn" ? "false" : "true"
