@@ -155,7 +155,7 @@ const { movie } = fetchMovie(
                     
                 }
                 {
-                    (!loading && count == 0) ? <p>Watchlist empty</p> : <></>
+                    (!loading && count == 0) ? <p>Watchlist is empty</p> : <></>
                 }
                 {
                     lightboxVisible && (renderMovie(movie))
