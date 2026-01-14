@@ -1,23 +1,27 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import logo from "../Logo/logo.png";
-import "../App.css"
+import "../App.css";
 
 function Navbar() {
-    return (
-        <header>
+  return (
+    <header>
       <div className="netflixLogo">
-        <a id="logo" href="/#home"><img src={logo} alt="Logo Image" /></a>
-      </div>      
-      <nav className="main-nav">                
-        <a href="/#home">Home</a>
+        <Link id="logo" to="/">
+          <img src={logo} alt="Logo Image" />
+        </Link>
+      </div>
+
+      <nav className="main-nav">
+        <Link to="/">Home</Link>
         <a href="/#tvShows">TV Shows</a>
         <a href="/#movies">Movies</a>
         <a href="/#anime">Anime</a>
         <a href="/#originals">Originals</a>
-        <a href="/watchlist">Watchlist</a>   
-      </nav>    
+        <Link to="/watchlist">Watchlist</Link>
+      </nav>
     </header>
-    )
+  );
 }
 
 export default Navbar;
